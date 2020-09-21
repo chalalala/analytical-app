@@ -1,46 +1,42 @@
 import React, {Component} from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import {Image, Row, Col, Navbar, Container, Nav, ListGroup, Button} from 'react-bootstrap';
+import {Image, Row, Col, Navbar, Container, Nav, ListGroup} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import NavbarToggle from 'react-bootstrap/esm/NavbarToggle';
 
 class App extends Component {
   render(){
     return (
       <div className="App">
         <div id="sidebar">
-          <FontAwesomeIcon icon="coffee" inverse/>
 
-          <nav class="navbar navbar-dark">
+          <nav className="navbar navbar-dark">
               <span class="navbar-toggler-icon ml-auto" 
-                style={{width:20}}
                 onClick={hideSidebar}
                 id="hideToggler">
               </span> 
           </nav>
 
           <div className="user-info">
-            <h6 id="name">{user.name}</h6>
-            <div id="contact">{user.contact}</div>
+            <h6 className="name">{user.name}</h6>
+            <div className="subtitle">{user.contact}</div>
             <Image src={user.avatar} roundedCircle className="avatar"/>
           </div>
 
-          <ListGroup variant="flush" id="ref">
-            <p style={{marginLeft:25,color:'white'}}>APPLICATION</p>
-            <div className="list-group-item">Dashboards</div>
-            <div className="list-group-item">Analytics</div>
-            <div className="list-group-item">Project</div>
-            <div className="list-group-item">Calendar</div> 
-          </ListGroup>
+          <div id="ref">
+            <p style={{opacity:0.8,fontSize:14}}>APPLICATION</p>
+            <p className="navg">Dashboards</p>
+            <p className="navg">Analytics</p>
+            <p className="navg">Project</p>
+            <p className="navg">Calendar</p> 
+          </div>
         </div>
       
-
         <Navbar variant="light" bg="light">
           <Navbar>
-            <div class="navbar navbar-light bg-light">
+            <div class="navbar navbar-light">
               <span class="navbar-toggler-icon" 
-                style={{width:20,display:'none'}}
+                style={{display:'none'}}
                 onClick={showSidebar}
                 id="showToggler"
               >
@@ -61,10 +57,36 @@ class App extends Component {
               </Navbar.Text>
           </Navbar>
         </Navbar>
-            
-        <div className="graph">
 
+        <div className="content show" id="Analytics">
+          <div className="graph-wrapper">
+            <Row>
+              <Col>
+                <h6>{graph.title}</h6>
+                <div class="subtitle">{graph.subtitle}</div>  
+              </Col>
+            </Row>
+            <Row>
+              <div className="graph">
+                <img src={graph.image}/>
+              </div>
+            </Row>
+          </div>
+
+          <Row>
+            <Col lg="7" style={{textAlign:'left'}}>
+              <p style={{marginLeft:50}}>How are your active users trending over time?</p>
+            </Col>
+
+            <Col lg="5" style={{textAlign:'left'}}>
+              <p>What are your top devices?</p>
+            </Col>
+          </Row>     
         </div>
+
+        <div className="content" id="Dashboards">
+          <p>Nothing's here</p>
+        </div>   
 
       </div>
     )
@@ -74,9 +96,15 @@ class App extends Component {
 const user = {
   name: 'Mai Doan',
   contact: 'maidt.bi9162@st.usth.edu.vn',
-  avatar: require('./avatar.jpg'),
+  avatar: require('./images/avatar.jpg'),
   status: 'Guest',
 };
+
+const graph = {
+  title: 'Annual Number of Deaths from Wildfire',
+  subtitle: 'Global Deaths Since 2019 due to Wildfires',
+  image: require('./images/Line-Graphs.jpg')
+}
 
 var hideSidebar = () => {
   document.getElementById("sidebar").style.display = "none";
@@ -88,5 +116,19 @@ var showSidebar = () => {
   document.getElementById("showToggler").style.display = "none";
   document.getElementById("hideToggler").style.display = "block";
 }
+
+var displayContent = () => {
+  var container = document.getElementById("ref");
+  var navigator = container.getElementsByClassName("navg");
+  for (var i=0;i<navigator.length;i++){
+    navigator[i].addEventListener("click",function(){
+      var current = document.querySelector("show");
+      current.className = current.className.replace(" show","");
+      document.getElementById(navigator[i].innerHTML).className += " show";
+    })
+  }
+}
+
+// displayContent();
 
 export default App;

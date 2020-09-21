@@ -51,7 +51,7 @@
   text-align: center;
   color: white;
 }
-#contact{
+.subtitle{
   color: #adb0bb;
   font-size: 15px;
 }
@@ -67,26 +67,51 @@
   background-color: transparent;
   font-size: 16px;
 }
-
-#content{
-  width:80%;
-  float:left;
-  display: flex;
+#ref{
+  font-size:18px;
+  margin-left:45px;
+  color:white;
 }
 .small-avatar{
   width:50px;
   height:50px;
   margin-right:10px; 
 }
+
+.content{
+  display:none;
+}
+
+.show{
+  display:block;
+}
+
+.graph-wrapper{
+  background-Color:#282c36;
+  color: white;
+  text-align: left;
+}
+.graph-wrapper h6{
+  padding-top: 10px;
+  margin-left:20px;
+}
+.graph-wrapper div{
+  margin-left:20px;
+}
 .graph{
+  width:100%;
   height: 300px;
-  background-color: #282c36;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.graph img{
+  width:98%;
+  height:100%;
+  object-fit: contain;
 }
 
 #showToggler, #hideToggler{
   cursor:pointer;
-}
-
-#showToggler .navbar-toggler-icon{
-  color: white;
+  width:20;
 }
