@@ -8,39 +8,48 @@ import {  BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 
 class App extends Component {
   render(){
+    // var setActiveState = () =>{
+    //   const node = ReactDOM.findDOMNode(this);
+
+    //   // Get child nodes
+    //   if (node instanceof HTMLElement) {
+    //       const child = node.querySelector(".active");
+    //       if (child) child.className = child.className.replace("active","deactive");
+    //   }
+    // }
+
     return (
       <Router>
       <div className="App">
         <div id="sidebar">
+          {/* Navbar Toggler */}
           <nav className="navbar navbar-dark">
-              <span class="navbar-toggler-icon ml-auto" 
+              <span className="navbar-toggler-icon ml-auto" 
                 onClick={hideSidebar}
                 id="hideToggler">
               </span> 
           </nav>
 
+          {/* Avatar */}
           <div className="user-info">
             <h6 className="name">{user.name}</h6>
             <div className="subtitle">{user.contact}</div>
             <Image src={user.avatar} roundedCircle className="avatar"/>
           </div>
 
+          {/* Navigator */}
           <div id="ref">
-            <ul>
-              <li style={{opacity:0.8}}><Link to ="/" style={styles.linkStyle}>Dashboards</Link></li>
-              <li >
-                <Link to ="/analytic" style={styles.linkStyle}>Analytics</Link>
-              </li>
-              <li><Link to ="/project"style={styles.linkStyle}>Project</Link></li>
-              <li><Link to ="/calendar" style={styles.linkStyle}>Calendar</Link></li>
-            </ul>
+            <p className="active"><Link to ="/" style={styles.linkStyle}>Dashboards</Link></p>
+            <p className="deactive"><Link to ="/analytic" style={styles.linkStyle}>Analytics</Link></p>
+            <p className="deactive"><Link to ="/project"style={styles.linkStyle}>Project</Link></p>
+            <p className="deactive"><Link to ="/calendar" style={styles.linkStyle}>Calendar</Link></p>
           </div>
         </div>
-
+        
         <Navbar variant="light" bg="light">
           <Navbar>
-            <div class="navbar navbar-light">
-              <span class="navbar-toggler-icon" 
+            <div className="navbar navbar-light">
+              <span className="navbar-toggler-icon" 
                 style={{display:'none'}}
                 onClick={showSidebar}
                 id="showToggler"
@@ -62,6 +71,7 @@ class App extends Component {
               </Navbar.Text>
           </Navbar>
         </Navbar>
+        
         <Switch>
           <Route path="/analytic">
             <Analytic />
@@ -76,53 +86,62 @@ class App extends Component {
             <Home />
           </Route>
         </Switch>
-
-          {/* <Row>
-            <Col lg="7" style={{textAlign:'left'}}>
-              <p style={{marginLeft:50}}>How are your active users trending over time?</p>
-            </Col>
-
-            <Col lg="5" style={{textAlign:'left'}}>
-              <p>What are your top devices?</p>
-            </Col>
-          </Row>      */}
       </div>
       </Router>
     )
   }
 }
 function Home(){
-  return (
-    <div>
-    <p>Nothing's here</p>
-    </div> 
+  return(
+    <Row>
+      <Col><h2>Home</h2></Col>
+    </Row>
   );
 }
 function Calendar(){
-  return <h2>Calendar</h2>
+  return(
+    <Row>
+      <Col><h2>Calendar</h2></Col>
+    </Row>
+  );
 }
 function Analytic(){
   return (
-    <div className="content show" id="Analytics">
+    <div className="content">
       <div className="graph-wrapper">
         <Row>
           <Col>
             <h6>{graph.title}</h6>
-            <div class="subtitle">{graph.subtitle}</div>  
+            <div className="subtitle">{graph.subtitle}</div>  
           </Col>
         </Row>
         <Row>
           <div className="graph">
             <img src={graph.image}/>
           </div>
-        </Row>
+        </Row> 
       </div>
+
+      <Row>
+        <Col lg="7" style={{textAlign:'left'}}>
+          <p style={{marginLeft:50}}>How are your active users trending over time?</p>
+        </Col>
+
+        <Col lg="5" style={{textAlign:'left'}}>
+          <p>What are your top devices?</p>
+        </Col>
+      </Row>    
     </div>
   );
 }
 function Project(){
-  return <h2>Project</h2>
+  return(
+    <Row>
+      <Col><h2>Project</h2></Col>
+    </Row>
+  );
 }
+
 const user = {
   name: 'Mai Doan',
   contact: 'maidt.bi9162@st.usth.edu.vn',
@@ -147,12 +166,12 @@ var showSidebar = () => {
   document.getElementById("hideToggler").style.display = "block";
 }
 
-export default App;
-
 let styles = {
   linkStyle:{
     textDecoration: 'none', 
     color: "white",
-    opacity: 0.8
   }
 };
+
+export default App;
+
