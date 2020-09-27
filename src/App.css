@@ -42,7 +42,7 @@
   width:20;
 }
 
-#sidebar{
+/* #sidebar{
   background-color:	#303030; 
   box-shadow: 2px 5px 3px;
   width:20%;
@@ -51,7 +51,7 @@
   text-align: left;
   float:left;
   transition: 0.8s ease;
-}
+} */
 .user-info{ 
   padding-top: 20px; 
   text-align: center;
@@ -114,7 +114,72 @@
 ul {
   list-style: none;
 }
-Link{
+
+/* ------PHUONG INPUT MORE IN HERE---------- */
+html,
+body {
+  margin: 0;
+}
+
+#App {
+  font-family: sans-serif;
+  height: 100vh;
+}
+
+#page-wrap {
+  text-align: center;
+  overflow: auto;
+}
+
+.bm-item {
+  display: inline-block;
+  text-decoration: none;
+  margin-bottom: 10px;
+  color: #d1d1d1;
+  transition: color 0.2s;
+  opacity: 0.5;
+}
+.bm-item:hover{
+  color: #89beb3;
+  opacity: 1;
+}
+.bm-item:hover {
   color: white;
-  textDecoration: 'none', 
+}
+.bm-burger-button {
+  position: fixed;
+  width: 26px;
+  height: 20px;
+  left: 26px;
+  top: 36px;
+}
+.bm-burger-bars {
+  background: #1d181d;
+}
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+.bm-cross {
+  background: #bdc3c7;
+}
+.bm-menu {
+  background: #1d181d;
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+}
+.bm-morph-shape {
+  fill: #373a47;
+}
+.bm-item-list {
+  color: #b8b7ad;
+}
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.3);
+}
+.activeLink{
+  text-decoration: none;
+  color: #89beb3;
+  border: none;
+  opacity: 1;
 }
