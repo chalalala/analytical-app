@@ -27,23 +27,45 @@ export default class App extends React.Component {
     this.setState(state => ({menuOpen: !state.menuOpen}))
   }
   render(){
+    // var setActiveState = () =>{
+    //   const node = ReactDOM.findDOMNode(this);
+
+    //   // Get child nodes
+    //   if (node instanceof HTMLElement) {
+    //       const child = node.querySelector(".active");
+    //       if (child) child.className = child.className.replace("active","deactive");
+    //   }
+    // }
+
     return (
       <Router>
       <div className="App">
         <div id="sidebar">
+<<<<<<< HEAD
           {/* <nav className="navbar navbar-dark">
               <span class="navbar-toggler-icon ml-auto" 
+=======
+          {/* Navbar Toggler */}
+          <nav className="navbar navbar-dark">
+              <span className="navbar-toggler-icon ml-auto" 
+>>>>>>> de7d5885c2396a603e268aa43cf73020d417440c
                 onClick={hideSidebar}
                 id="hideToggler">
               </span> 
           </nav> */}
 
+<<<<<<< HEAD
           {/* <div className="user-info">
+=======
+          {/* Avatar */}
+          <div className="user-info">
+>>>>>>> de7d5885c2396a603e268aa43cf73020d417440c
             <h6 className="name">{user.name}</h6>
             <div className="subtitle">{user.contact}</div>
             <Image src={user.avatar} roundedCircle className="avatar"/>
           </div> */}
 
+<<<<<<< HEAD
           <Menu  isOpen={this.state.menuOpen}
           onStateChange={(state) => this.handleStateChange(state)}>
             <Navbar className="ml-auto">
@@ -69,12 +91,21 @@ export default class App extends React.Component {
               Calendar
             </NavLink>
           </Menu>
+=======
+          {/* Navigator */}
+          <div id="ref">
+            <p className="active"><Link to ="/" style={styles.linkStyle}>Dashboards</Link></p>
+            <p className="deactive"><Link to ="/analytic" style={styles.linkStyle}>Analytics</Link></p>
+            <p className="deactive"><Link to ="/project"style={styles.linkStyle}>Project</Link></p>
+            <p className="deactive"><Link to ="/calendar" style={styles.linkStyle}>Calendar</Link></p>
+          </div>
+>>>>>>> de7d5885c2396a603e268aa43cf73020d417440c
         </div>
-
+        
         <Navbar variant="light" bg="light">
           <Navbar>
-            <div class="navbar navbar-light">
-              <span class="navbar-toggler-icon" 
+            <div className="navbar navbar-light">
+              <span className="navbar-toggler-icon" 
                 style={{display:'none'}}
                 onClick={showSidebar}
                 id="showToggler"
@@ -96,6 +127,7 @@ export default class App extends React.Component {
               </Navbar.Text>
           </Navbar>
         </Navbar>
+        
         <Switch>
           <Route path="/analytic">
             <Analytic />
@@ -113,52 +145,77 @@ export default class App extends React.Component {
             <Home />
           </Route>
         </Switch>
-
-          {/* <Row>
-            <Col lg="7" style={{textAlign:'left'}}>
-              <p style={{marginLeft:50}}>How are your active users trending over time?</p>
-            </Col>
-
-            <Col lg="5" style={{textAlign:'left'}}>
-              <p>What are your top devices?</p>
-            </Col>
-          </Row>      */}
       </div>
       </Router>
     )
   }
 }
+<<<<<<< HEAD
 function Dashboard(){
   return <><h1 style={{textAlign:'center'}}>This is dashboard tab</h1></>
 }
 function Calendar(){
   return <h1 style={{textAlign:'center'}}>This is calendar tab</h1>
+=======
+function Home(){
+  return(
+    <Row>
+      <Col><h2>Home</h2></Col>
+    </Row>
+  );
+}
+function Calendar(){
+  return(
+    <Row>
+      <Col><h2>Calendar</h2></Col>
+    </Row>
+  );
+>>>>>>> de7d5885c2396a603e268aa43cf73020d417440c
 }
 function Analytic(){
   return (
-    <div className="content show" id="Analytics">
+    <div className="content">
       <div className="graph-wrapper">
         <Row>
           <Col>
             <h6>{graph.title}</h6>
-            <div class="subtitle">{graph.subtitle}</div>  
+            <div className="subtitle">{graph.subtitle}</div>  
           </Col>
         </Row>
         <Row>
           <div className="graph">
             <img src={graph.image}/>
           </div>
-        </Row>
+        </Row> 
       </div>
+
+      <Row>
+        <Col lg="7" style={{textAlign:'left'}}>
+          <p style={{marginLeft:50}}>How are your active users trending over time?</p>
+        </Col>
+
+        <Col lg="5" style={{textAlign:'left'}}>
+          <p>What are your top devices?</p>
+        </Col>
+      </Row>    
     </div>
   );
 }
 function Project(){
+<<<<<<< HEAD
   return <h1 style={{textAlign:'center'}}>This is project tab</h1>
 }
 function Home(){
   return <h1 style={{textAlign:'center'}}>This is application tab</h1>
+=======
+  return(
+    <Row>
+      <Col><h2>Project</h2></Col>
+    </Row>
+  );
+>>>>>>> de7d5885c2396a603e268aa43cf73020d417440c
 }
+
 const user = {
   name: 'Mai Doan',
   contact: 'maidt.bi9162@st.usth.edu.vn',
@@ -183,4 +240,16 @@ var showSidebar = () => {
   document.getElementById("hideToggler").style.display = "block";
 }
 
+<<<<<<< HEAD
 // export default App;
+=======
+let styles = {
+  linkStyle:{
+    textDecoration: 'none', 
+    color: "white",
+  }
+};
+
+export default App;
+
+>>>>>>> de7d5885c2396a603e268aa43cf73020d417440c
