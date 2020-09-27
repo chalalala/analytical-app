@@ -40,7 +40,7 @@ export default class App extends React.Component {
             <Navbar.Text activeClassName="activeLink"> 
               APPLICATION
             </Navbar.Text>
-            <NavLink to="/" onClick={() => this.toggleMenu(false)}>
+            <NavLink to="/" onClick={() => this.toggleMenu(false)} activeClassName="activeLink">
               <FontAwesomeIcon icon={faColumns} style={{marginRight: 15,}}/>Dashboards
             </NavLink>
             <NavLink to="/analytic" onClick={() => this.toggleMenu(false)} activeClassName="activeLink">
