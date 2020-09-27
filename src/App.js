@@ -2,39 +2,73 @@ import React, {Component} from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import {Image, Row, Col, Navbar, Container, Nav, ListGroup} from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee, faChartBar } from '@fortawesome/free-solid-svg-icons'
 import ReactDOM from 'react-dom';
-import {  BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
+import {  BrowserRouter as Router, Switch, Route, NavLink} from "react-router-dom";
+import{push as Menu} from 'react-burger-menu';
 
-class App extends Component {
+
+export default class App extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      menuOpen: false
+    }
+  }
+  handleStateChange (state) {
+    this.setState({menuOpen: state.isOpen})  
+  }
+  closeMenu () {
+    this.setState({menuOpen: false})
+  }
+  toggleMenu () {
+    this.setState(state => ({menuOpen: !state.menuOpen}))
+  }
   render(){
     return (
       <Router>
       <div className="App">
         <div id="sidebar">
-          <nav className="navbar navbar-dark">
+          {/* <nav className="navbar navbar-dark">
               <span class="navbar-toggler-icon ml-auto" 
                 onClick={hideSidebar}
                 id="hideToggler">
               </span> 
-          </nav>
+          </nav> */}
 
-          <div className="user-info">
+          {/* <div className="user-info">
             <h6 className="name">{user.name}</h6>
             <div className="subtitle">{user.contact}</div>
             <Image src={user.avatar} roundedCircle className="avatar"/>
-          </div>
+          </div> */}
 
-          <div id="ref">
-            <ul>
-              <li style={{opacity:0.8}}><Link to ="/" style={styles.linkStyle}>Dashboards</Link></li>
-              <li >
-                <Link to ="/analytic" style={styles.linkStyle}>Analytics</Link>
-              </li>
-              <li><Link to ="/project"style={styles.linkStyle}>Project</Link></li>
-              <li><Link to ="/calendar" style={styles.linkStyle}>Calendar</Link></li>
-            </ul>
-          </div>
+          <Menu  isOpen={this.state.menuOpen}
+          onStateChange={(state) => this.handleStateChange(state)}>
+            <Navbar className="ml-auto">
+              <Image src={user.avatar} roundedCircle className="small-avatar"/>
+              <Navbar.Text style={{padding:0,textAlign:"left", color: 'white', alignItems:'center'}}>
+                <h6 style={{marginBottom:0}}>{user.name}</h6>
+                <div>{user.status}</div>
+              </Navbar.Text>
+            </Navbar>
+            <NavLink to="/" onClick={() => this.closeMenu()} className="menu-item" activeClassName="activeLink" > 
+              APPLICATION
+            </NavLink>
+            <NavLink to="/dashboard" onClick={() => this.closeMenu()} className="menu-item" activeClassName="activeLink" >Dashboards</NavLink>
+            {/* <i class="fas fa-chart-line" style={{color: 'white'}}></i> */}
+            {/* <span className="fas fa-chart-line" style={{color: 'white'}}></span> */}
+            <NavLink to="/analytic" onClick={() => this.closeMenu()} className="menu-item" activeClassName="activeLink">
+              <FontAwesomeIcon icon={faChartBar} style={{marginRight: 15,}}/>Analytic
+            </NavLink>
+            <NavLink to="/project" onClick={() => this.closeMenu()} className="menu-item" activeClassName="activeLink">
+              Project
+            </NavLink>
+            <NavLink to="/calendar" onClick={() => this.closeMenu()} className="menu-item" activeClassName="activeLink" >
+              Calendar
+            </NavLink>
+          </Menu>
         </div>
 
         <Navbar variant="light" bg="light">
@@ -72,6 +106,9 @@ class App extends Component {
           <Route path="/calendar">
             <Calendar />
           </Route>
+          <Route path="/dashboard">
+            <Dashboard />
+          </Route>
           <Route path="/">
             <Home />
           </Route>
@@ -91,15 +128,11 @@ class App extends Component {
     )
   }
 }
-function Home(){
-  return (
-    <div>
-    <p>Nothing's here</p>
-    </div> 
-  );
+function Dashboard(){
+  return <><h1 style={{textAlign:'center'}}>This is dashboard tab</h1></>
 }
 function Calendar(){
-  return <h2>Calendar</h2>
+  return <h1 style={{textAlign:'center'}}>This is calendar tab</h1>
 }
 function Analytic(){
   return (
@@ -121,7 +154,10 @@ function Analytic(){
   );
 }
 function Project(){
-  return <h2>Project</h2>
+  return <h1 style={{textAlign:'center'}}>This is project tab</h1>
+}
+function Home(){
+  return <h1 style={{textAlign:'center'}}>This is application tab</h1>
 }
 const user = {
   name: 'Mai Doan',
@@ -147,12 +183,4 @@ var showSidebar = () => {
   document.getElementById("hideToggler").style.display = "block";
 }
 
-export default App;
-
-let styles = {
-  linkStyle:{
-    textDecoration: 'none', 
-    color: "white",
-    opacity: 0.8
-  }
-};
+// export default App;
