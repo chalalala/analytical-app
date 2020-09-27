@@ -1,13 +1,12 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import {Image, Row, Col, Navbar, Container, Nav, ListGroup} from 'react-bootstrap';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee, faChartBar } from '@fortawesome/free-solid-svg-icons'
-import ReactDOM from 'react-dom';
+import {Image, Row, Col, Navbar, Nav } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChartBar, faColumns, faTasks, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarAlt, faEnvelope, faAddressBook, faCheckSquare} from '@fortawesome/free-regular-svg-icons'
 import {  BrowserRouter as Router, Switch, Route, NavLink} from "react-router-dom";
-import{push as Menu} from 'react-burger-menu';
+import { push as Menu } from 'react-burger-menu';
 
 
 export default class App extends React.Component {
@@ -20,103 +19,50 @@ export default class App extends React.Component {
   handleStateChange (state) {
     this.setState({menuOpen: state.isOpen})  
   }
-  closeMenu () {
-    this.setState({menuOpen: false})
-  }
-  toggleMenu () {
-    this.setState(state => ({menuOpen: !state.menuOpen}))
+  toggleMenu (menuState) {
+    this.setState({menuOpen: menuState})
   }
   render(){
-    // var setActiveState = () =>{
-    //   const node = ReactDOM.findDOMNode(this);
-
-    //   // Get child nodes
-    //   if (node instanceof HTMLElement) {
-    //       const child = node.querySelector(".active");
-    //       if (child) child.className = child.className.replace("active","deactive");
-    //   }
-    // }
-
     return (
       <Router>
       <div className="App">
         <div id="sidebar">
-<<<<<<< HEAD
-          {/* <nav className="navbar navbar-dark">
-              <span class="navbar-toggler-icon ml-auto" 
-=======
-          {/* Navbar Toggler */}
-          <nav className="navbar navbar-dark">
-              <span className="navbar-toggler-icon ml-auto" 
->>>>>>> de7d5885c2396a603e268aa43cf73020d417440c
-                onClick={hideSidebar}
-                id="hideToggler">
-              </span> 
-          </nav> */}
+          <Menu
+            isOpen={this.state.menuOpen}
+            onStateChange={(state) => this.handleStateChange(state)}>
+            
+            <div className="user-info">
+              <h6 className="name">{user.name}</h6>
+              <div className="subtitle">{user.contact}</div>
+              <Image src={user.avatar} roundedCircle className="avatar"/>
+            </div>
 
-<<<<<<< HEAD
-          {/* <div className="user-info">
-=======
-          {/* Avatar */}
-          <div className="user-info">
->>>>>>> de7d5885c2396a603e268aa43cf73020d417440c
-            <h6 className="name">{user.name}</h6>
-            <div className="subtitle">{user.contact}</div>
-            <Image src={user.avatar} roundedCircle className="avatar"/>
-          </div> */}
-
-<<<<<<< HEAD
-          <Menu  isOpen={this.state.menuOpen}
-          onStateChange={(state) => this.handleStateChange(state)}>
-            <Navbar className="ml-auto">
-              <Image src={user.avatar} roundedCircle className="small-avatar"/>
-              <Navbar.Text style={{padding:0,textAlign:"left", color: 'white', alignItems:'center'}}>
-                <h6 style={{marginBottom:0}}>{user.name}</h6>
-                <div>{user.status}</div>
-              </Navbar.Text>
-            </Navbar>
-            <NavLink to="/" onClick={() => this.closeMenu()} className="menu-item" activeClassName="activeLink" > 
+            <Navbar.Text activeClassName="activeLink"> 
               APPLICATION
+            </Navbar.Text>
+            <NavLink to="/" onClick={() => this.toggleMenu(false)}>
+              <FontAwesomeIcon icon={faColumns} style={{marginRight: 15,}}/>Dashboards
             </NavLink>
-            <NavLink to="/dashboard" onClick={() => this.closeMenu()} className="menu-item" activeClassName="activeLink" >Dashboards</NavLink>
-            {/* <i class="fas fa-chart-line" style={{color: 'white'}}></i> */}
-            {/* <span className="fas fa-chart-line" style={{color: 'white'}}></span> */}
-            <NavLink to="/analytic" onClick={() => this.closeMenu()} className="menu-item" activeClassName="activeLink">
+            <NavLink to="/analytic" onClick={() => this.toggleMenu(false)} activeClassName="activeLink">
               <FontAwesomeIcon icon={faChartBar} style={{marginRight: 15,}}/>Analytic
             </NavLink>
-            <NavLink to="/project" onClick={() => this.closeMenu()} className="menu-item" activeClassName="activeLink">
-              Project
+            <NavLink to="/project" onClick={() => this.toggleMenu(false)} activeClassName="activeLink">
+              <FontAwesomeIcon icon={faTasks} style={{marginRight: 15,}}/>Project
             </NavLink>
-            <NavLink to="/calendar" onClick={() => this.closeMenu()} className="menu-item" activeClassName="activeLink" >
-              Calendar
+            <NavLink to="/calendar" onClick={() => this.toggleMenu(false)} activeClassName="activeLink" >
+              <FontAwesomeIcon icon={faCalendarAlt} style={{marginRight: 15,}}/>Calendar
             </NavLink>
           </Menu>
-=======
-          {/* Navigator */}
-          <div id="ref">
-            <p className="active"><Link to ="/" style={styles.linkStyle}>Dashboards</Link></p>
-            <p className="deactive"><Link to ="/analytic" style={styles.linkStyle}>Analytics</Link></p>
-            <p className="deactive"><Link to ="/project"style={styles.linkStyle}>Project</Link></p>
-            <p className="deactive"><Link to ="/calendar" style={styles.linkStyle}>Calendar</Link></p>
-          </div>
->>>>>>> de7d5885c2396a603e268aa43cf73020d417440c
         </div>
         
         <Navbar variant="light" bg="light">
           <Navbar>
-            <div className="navbar navbar-light">
-              <span className="navbar-toggler-icon" 
-                style={{display:'none'}}
-                onClick={showSidebar}
-                id="showToggler"
-              >
-              </span>
-            </div>
-            <Nav.Link href="#">Calendar</Nav.Link>
-            <Nav.Link href="#">Mail</Nav.Link>
-            <Nav.Link href="#">Contact</Nav.Link>
-            <Nav.Link href="#">To-do</Nav.Link>
-            <Nav.Link href="#">Stars</Nav.Link>
+            <Nav.Link>&nbsp;</Nav.Link>
+            <Nav.Link href="#"><FontAwesomeIcon icon={faCalendarAlt} style={styles.navbarLink}/></Nav.Link>
+            <Nav.Link href="#"><FontAwesomeIcon icon={faEnvelope} style={styles.navbarLink}/></Nav.Link>
+            <Nav.Link href="#"><FontAwesomeIcon icon={faAddressBook} style={styles.navbarLink}/></Nav.Link>
+            <Nav.Link href="#"><FontAwesomeIcon icon={faCheckSquare} style={styles.navbarLink}/></Nav.Link>
+            <Nav.Link href="#"><FontAwesomeIcon icon={faStar} style={{color:'#fdb511'}}/></Nav.Link>
           </Navbar>
 
           <Navbar className="ml-auto">
@@ -138,11 +84,8 @@ export default class App extends React.Component {
           <Route path="/calendar">
             <Calendar />
           </Route>
-          <Route path="/dashboard">
-            <Dashboard />
-          </Route>
           <Route path="/">
-            <Home />
+            <Dashboards />
           </Route>
         </Switch>
       </div>
@@ -150,27 +93,12 @@ export default class App extends React.Component {
     )
   }
 }
-<<<<<<< HEAD
-function Dashboard(){
-  return <><h1 style={{textAlign:'center'}}>This is dashboard tab</h1></>
+
+function Dashboards(){
+  return <h1 style={{marginTop: 20, textAlign:'center'}}>This is Dashboards tab</h1>
 }
 function Calendar(){
-  return <h1 style={{textAlign:'center'}}>This is calendar tab</h1>
-=======
-function Home(){
-  return(
-    <Row>
-      <Col><h2>Home</h2></Col>
-    </Row>
-  );
-}
-function Calendar(){
-  return(
-    <Row>
-      <Col><h2>Calendar</h2></Col>
-    </Row>
-  );
->>>>>>> de7d5885c2396a603e268aa43cf73020d417440c
+  return <h1 style={{marginTop: 20, textAlign:'center'}}>This is calendar tab</h1>
 }
 function Analytic(){
   return (
@@ -189,7 +117,7 @@ function Analytic(){
         </Row> 
       </div>
 
-      <Row>
+      {/* <Row>
         <Col lg="7" style={{textAlign:'left'}}>
           <p style={{marginLeft:50}}>How are your active users trending over time?</p>
         </Col>
@@ -197,23 +125,12 @@ function Analytic(){
         <Col lg="5" style={{textAlign:'left'}}>
           <p>What are your top devices?</p>
         </Col>
-      </Row>    
+      </Row>     */}
     </div>
   );
 }
 function Project(){
-<<<<<<< HEAD
-  return <h1 style={{textAlign:'center'}}>This is project tab</h1>
-}
-function Home(){
-  return <h1 style={{textAlign:'center'}}>This is application tab</h1>
-=======
-  return(
-    <Row>
-      <Col><h2>Project</h2></Col>
-    </Row>
-  );
->>>>>>> de7d5885c2396a603e268aa43cf73020d417440c
+  return <h1 style={{marginTop: 20, textAlign:'center'}}>This is project tab</h1>
 }
 
 const user = {
@@ -229,27 +146,8 @@ const graph = {
   image: require('./images/Line-Graphs.jpg')
 }
 
-var hideSidebar = () => {
-  document.getElementById("sidebar").style.display = "none";
-  document.getElementById("showToggler").style.display = "block";
-}
-
-var showSidebar = () => {
-  document.getElementById("sidebar").style.display = "block";
-  document.getElementById("showToggler").style.display = "none";
-  document.getElementById("hideToggler").style.display = "block";
-}
-
-<<<<<<< HEAD
-// export default App;
-=======
-let styles = {
-  linkStyle:{
-    textDecoration: 'none', 
-    color: "white",
+const styles = {
+  navbarLink: {
+    color:'#b3b3b3',
   }
-};
-
-export default App;
-
->>>>>>> de7d5885c2396a603e268aa43cf73020d417440c
+}

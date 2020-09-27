@@ -1,63 +1,14 @@
-/* .App {
-  text-align: center;
+html, body {
+  margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
-/* ---------------------------- */
-#showToggler, #hideToggler{
-  cursor:pointer;
-  width:20;
-}
-
-/* #sidebar{
-  background-color:	#303030; 
-  width:20%;
-  height:100vh;
-  padding-top:20px;
-  text-align: left;
-  float:left;
-  transition: 0.8s ease;
-} */
 .user-info{ 
   padding-top: 20px; 
   text-align: center;
   color: white;
 }
 .subtitle{
-  color: #adb0bb;
+  color: #ffffff;
   font-size: 15px;
 }
 .avatar{
@@ -72,19 +23,6 @@
   width:70px;
   height:70px;
   margin-right:10px; 
-}
-.deactive{
-  opacity:0.8;
-}
-.active{
-  opacity:1;
-}
-#ref{
-  font-size:18px;
-  margin-left:45px;
-  color:white;
-  /* position: fixed; right: inherit; z-index: 1100;
-  width: 300px; height: 100%; transition: all 0.5s ease 0s; */
 }
 .graph-wrapper{
   background-Color:#282c36;
@@ -108,26 +46,6 @@
   width:100%;
   height:100%;
   object-fit: contain;
-<<<<<<< HEAD
-}
-ul {
-  list-style: none;
-}
-
-/* ------PHUONG INPUT MORE IN HERE---------- */
-html,
-body {
-  margin: 0;
-}
-
-#App {
-  font-family: sans-serif;
-  height: 100vh;
-}
-
-#page-wrap {
-  text-align: center;
-  overflow: auto;
 }
 
 .bm-item {
@@ -139,18 +57,16 @@ body {
   opacity: 0.5;
 }
 .bm-item:hover{
-  color: #89beb3;
-  opacity: 1;
-}
-.bm-item:hover {
   color: white;
+  opacity: 1;
 }
 .bm-burger-button {
   position: fixed;
-  width: 26px;
-  height: 20px;
-  left: 26px;
-  top: 36px;
+  width: 24px;
+  height: 18px;
+  float: left;
+  left: 40px;
+  top: 48px;
 }
 .bm-burger-bars {
   background: #1d181d;
@@ -182,6 +98,3 @@ body {
   border: none;
   opacity: 1;
 }
-=======
-}
->>>>>>> de7d5885c2396a603e268aa43cf73020d417440c
