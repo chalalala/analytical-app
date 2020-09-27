@@ -37,10 +37,10 @@ export default class App extends React.Component {
               <Image src={user.avatar} roundedCircle className="avatar"/>
             </div>
 
-            <Navbar.Text activeClassName="activeLink"> 
+            <Navbar.Text> 
               APPLICATION
             </Navbar.Text>
-            <NavLink to="/" onClick={() => this.toggleMenu(false)} activeClassName="activeLink">
+            <NavLink to="/dashboard" onClick={() => this.toggleMenu(false)} activeClassName="activeLink">
               <FontAwesomeIcon icon={faColumns} style={{marginRight: 15,}}/>Dashboards
             </NavLink>
             <NavLink to="/analytic" onClick={() => this.toggleMenu(false)} activeClassName="activeLink">
@@ -75,6 +75,9 @@ export default class App extends React.Component {
         </Navbar>
         
         <Switch>
+          <Route path="/dashboards">
+            <Dashboards />
+          </Route>
           <Route path="/analytic">
             <Analytic />
           </Route>
