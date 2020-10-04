@@ -1,8 +1,14 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+![demo gif](demo-analytics-app.gif)
+
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `npm ci`
+Install the node_modulos from the package.JSON.<br/>
+Don't try `npm install` because it will rewrite the package.JSON file.
 
 ### `npm start`
 
